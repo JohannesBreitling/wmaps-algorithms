@@ -7,12 +7,31 @@ pub fn read_file_to_string(file_path: &str) -> Result<String, InputParsingErr> {
 
 pub trait OSMXMLParser<'a> {
     fn parse(&'a mut self, content: String) -> Result<(), InputParsingErr>;
-    fn traverse_tree(&'a self) -> Result<(), InputParsingErr>;
+    //fn traverse_tree(&'a self) -> Result<(), InputParsingErr>;
 }
 
 pub struct OSMXMLParserImpl<'a> {
     content: Option<String>,
     doc: Option<roxmltree::Document<'a>>,
+}
+
+/*
+impl<'a> OSMXMLParserImpl<'a> {
+    pub fn new() -> Self {
+        Self {
+            doc: None,
+            content: None,
+        }
+    }
+}  */
+
+impl<'a> OSMXMLParserImpl<'a> {
+    pub fn new() -> Self {
+        Self {
+            doc: None,
+            content: None,
+        }
+    }
 }
 
 impl<'a> OSMXMLParser<'a> for OSMXMLParserImpl<'a> {
@@ -33,13 +52,9 @@ impl<'a> OSMXMLParser<'a> for OSMXMLParserImpl<'a> {
             }
         }
     }
-}
 
-impl<'a> OSMXMLParserImpl<'a> {
-    pub fn new() -> Self {
-        Self {
-            doc: None,
-            content: None,
-        }
-    }
+    /*
+    fn traverse_tree(&'a self) -> Result<(), InputParsingErr> {
+        Ok(())
+    } */
 }
