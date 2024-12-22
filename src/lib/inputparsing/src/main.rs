@@ -1,12 +1,12 @@
-use core::net;
-use std::alloc::System;
 use std::env;
 use std::io::{self, Write};
 use std::time::SystemTime;
 
+use wmaps_algorithms::datastructures;
+
 use inputparsing::OSMXMLParser;
 
-mod inputparsing;
+pub mod inputparsing;
 
 macro_rules! print_now {
     ($s: literal) => {
@@ -45,15 +45,15 @@ fn main() {
 
     let input_path: &str = &args[1];
 
-    let now = SystemTime::now();
+    let mut now = SystemTime::now();
     print_now!("Read input file.....");
+
     let file_content: String =
         inputparsing::read_file_to_string(input_path).expect("Error reading the input file");
-    let time_file_reading = now.elapsed();
 
     print_time_ms!(now);
 
-    let now = SystemTime::now();
+    now = SystemTime::now();
 
     print_now!("Build xml tree.....");
 
@@ -63,11 +63,12 @@ fn main() {
         .parse(file_content)
         .expect("Error parsing the input file");
 
-    let time_parse_xml = now.elapsed();
-
     print_time_ms!(now);
 
-    let now = SystemTime::now();
+    now = SystemTime::now();
 
     print!("Traverse xml tree.....");
+
+    println!("Moin");
+    datastructures::test();
 }

@@ -4,16 +4,14 @@ version = "0.1.0"
 edition = "2021"
 default-run = "wmaps-algorithms"
 
-# Binary for the input parsing and converting the osm data to binary graph format
-[[bin]]
-name = "build-inputs"
-path = "src/inputparsing/main.rs"
-test = false
-
 # Binary for the routing algorithms
 [[bin]]
 name = "wmaps-algorithms"
 path = "src/main.rs"
+
+[lib]
+name = "wmaps_algorithms"
+path = "src/lib/lib.rs"
 
 [dependencies]
 clippy = "0.0.302"
