@@ -2,6 +2,7 @@ use std::env;
 use std::io::{self, Write};
 use std::time::SystemTime;
 
+use wmaps_algorithms::algorithms;
 use wmaps_algorithms::datastructures;
 
 use inputparsing::OSMXMLParser;
@@ -71,4 +72,5 @@ fn main() {
 
     println!("Moin");
     datastructures::test();
+    algorithms::test();
 }

@@ -1,3 +1,5 @@
+use wmaps_algorithms::datastructures as ds;
+
 #[derive(Debug)]
 pub struct InputParsingErr {}
 
